@@ -1,12 +1,9 @@
+import numpy as np
+
+
 def main(inp):
-	a = list(map(int, inp.splitlines()))
-	result = 0
-
-	for i, j, k, l in zip(a, a[1:], a[2:], a[3:]):
-		if i + j + k < j + k + l:
-			result += 1
-
-	return result
+	a = np.cumsum([0] + list(map(int, inp.splitlines())))
+	return np.count_nonzero(a[3:-1] - a[:-4] < a[4:] - a[1:-3])
 
 
 if __name__ == '__main__':

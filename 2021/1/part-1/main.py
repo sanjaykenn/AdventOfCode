@@ -1,12 +1,9 @@
+import numpy as np
+
+
 def main(inp):
-	a = list(map(int, inp.splitlines()))
-	result = 0
-
-	for i, j in zip(a, a[1:]):
-		if j > i:
-			result += 1
-
-	return result
+	a = np.array(list(map(int, inp.splitlines())))
+	return np.count_nonzero(a[:-1] < a[1:])
 
 
 if __name__ == '__main__':
