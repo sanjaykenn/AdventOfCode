@@ -13,10 +13,8 @@ def main(inp):
 					'{': '}',
 					'<': '>',
 				}[c])
-			elif c != brackets[-1]:
+			elif c != brackets.pop():
 				break
-			else:
-				brackets.pop()
 		else:
 			score = 0
 			for b in reversed(brackets):

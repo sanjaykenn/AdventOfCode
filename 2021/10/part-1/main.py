@@ -13,7 +13,7 @@ def main(inp):
 					'{': '}',
 					'<': '>',
 				}[c])
-			elif c != brackets[-1]:
+			elif c != brackets.pop():
 				result += {
 					')': 3,
 					']': 57,
@@ -21,8 +21,6 @@ def main(inp):
 					'>': 25137
 				}[c]
 				break
-			else:
-				brackets.pop()
 
 	return result
 
