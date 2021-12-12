@@ -6,7 +6,7 @@ def dfs(g, start, end='end', visited=None):
 		return 1
 
 	visited = visited or set()
-	if start.lower() == start:
+	if start.islower():
 		visited.add(start)
 
 	path_count = 0
