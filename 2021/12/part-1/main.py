@@ -1,7 +1,7 @@
 from graph import Graph
 
 
-def dfs(g, start, end='end', visited=None):
+def dfs(g, start='start', end='end', visited=None):
 	if start == end:
 		return 1
 
@@ -24,7 +24,7 @@ def main(inp):
 		a, b = line.split('-')
 		g.add_edge(a, b, bidirectional=True)
 
-	return dfs(g, 'start')
+	return dfs(g)
 
 
 if __name__ == '__main__':
