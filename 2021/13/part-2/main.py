@@ -36,6 +36,8 @@ def main(inp):
 	plt.savefig('output.png')
 	plt.show()
 
+	return '\n'.join([''.join(row) for row in np.where(paper, chr(0x2588), ' ')])
+
 
 if __name__ == '__main__':
 	import sys
