@@ -1,5 +1,5 @@
 import math
-from collections import defaultdict, Counter
+from collections import Counter
 
 
 def main(inp):
@@ -10,7 +10,7 @@ def main(inp):
 	pairs = Counter(zip(word, word[1:]))
 
 	for _ in range(n):
-		new_pairs = defaultdict(int)
+		new_pairs = Counter()
 		for (a, b), count in pairs.items():
 			new_char = rules[a, b]
 			new_pairs[a, new_char] += count
@@ -18,7 +18,7 @@ def main(inp):
 
 		pairs = new_pairs
 
-	letter_count = defaultdict(int)
+	letter_count = Counter()
 	for (c1, c2), count in pairs.items():
 		letter_count[c1] += count
 		letter_count[c2] += count
