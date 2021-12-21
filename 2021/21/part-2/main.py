@@ -1,9 +1,8 @@
+import functools
 import re
 
 
 class Universe:
-	cache = {}
-
 	def __init__(self, player_positions, player_scores=None, player_turn=0):
 		self.player_positions = player_positions
 		self.player_scores = player_scores or (0,) * len(self.player_positions)
@@ -14,10 +13,8 @@ class Universe:
 			if self.player_scores[player] >= 21:
 				return player
 
+	@functools.cache
 	def get_winner_counts(self):
-		if self in Universe.cache:
-			return Universe.cache[self]
-
 		winner = self.get_winner()
 		wins = [0] * len(self.player_positions)
 
@@ -33,7 +30,6 @@ class Universe:
 			player_score[self.player_turn] += player_positions[self.player_turn]
 			wins = [(a + b * mul) for a, b in zip(wins, Universe(tuple(player_positions), tuple(player_score), next_turn).get_winner_counts())]
 
-		Universe.cache[self] = wins
 		return wins
 
 	def __hash__(self):
